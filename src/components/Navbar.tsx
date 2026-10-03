@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { name: "Accueil", href: "#hero" },
@@ -29,13 +30,13 @@ export default function Navbar() {
         isScrolled ? "glass py-3 shadow-sm" : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 2xl:max-w-6xl flex justify-between items-center">
         {/* Logo */}
         <a 
           href="#hero" 
-          className="font-display font-bold text-xl text-slate-900 hover:text-primary-600 transition-colors"
+          className="font-display font-bold text-xl text-foreground hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
         >
-          Oloumidé<span className="text-primary-600">.dev</span>
+          Oloumidé<span className="text-primary-600 dark:text-primary-400">.dev</span>
         </a>
 
         {/* Liens Desktop */}
@@ -44,21 +45,24 @@ export default function Navbar() {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
+              className="text-sm font-medium text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Bouton Menu Mobile */}
-        <button 
-          className="md:hidden text-slate-900 p-2" 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Ouvrir le menu"
-        >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Toggle thème + bouton menu mobile */}
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            className="md:hidden text-foreground p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Ouvrir le menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Menu Mobile (Animé) */}
@@ -69,7 +73,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden glass border-t border-slate-200/50 overflow-hidden"
+            className="md:hidden glass border-t border-slate-200/50 dark:border-white/10 overflow-hidden"
           >
             <div className="px-4 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -77,7 +81,7 @@ export default function Navbar() {
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-base font-medium text-slate-700 hover:text-primary-600 transition-colors"
+                  className="text-base font-medium text-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
                   {link.name}
                 </a>

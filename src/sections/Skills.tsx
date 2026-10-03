@@ -7,10 +7,10 @@ export default function Skills() {
   return (
     <section 
       id="skills" 
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-white/5"
       aria-labelledby="skills-heading"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto 2xl:max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -19,11 +19,11 @@ export default function Skills() {
         >
           <h2 
             id="skills-heading"
-            className="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4"
+            className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4"
           >
             Compétences Techniques
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+          <p className="text-muted max-w-2xl mx-auto text-lg">
             Un stack technique moderne et polyvalent, constamment enrichi par l&apos;apprentissage continu.
           </p>
           <div className="w-20 h-1 section-divider mx-auto mt-6"></div>
@@ -39,7 +39,7 @@ export default function Skills() {
   transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
   className="glass glass-hover p-6 rounded-2xl"
 >
-              <h3 className="text-lg font-display font-bold text-slate-900 mb-4 pb-2 border-b border-slate-200">
+              <h3 className="text-lg font-display font-bold text-foreground mb-4 pb-2 border-b border-slate-200 dark:border-white/10">
                 {skillGroup.category}
               </h3>
               <div className="flex flex-wrap gap-2">

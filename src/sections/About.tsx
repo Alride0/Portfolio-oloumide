@@ -23,14 +23,14 @@ export default function About() {
 
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto 2xl:max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true }} 
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4">À propos de moi</h2>
+          <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">À propos de moi</h2>
           <div className="w-20 h-1 section-divider mx-auto"></div>
         </motion.div>
         
@@ -44,11 +44,11 @@ export default function About() {
   transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }} 
   className="glass glass-hover p-8 rounded-2xl"
 >
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
-                <item.icon className="w-6 h-6 text-primary-600" />
+              <div className="w-12 h-12 bg-primary-100 dark:bg-primary-500/15 rounded-lg flex items-center justify-center mb-6">
+                <item.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
               </div>
-              <h3 className="text-xl font-display font-bold text-slate-900 mb-3">{item.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+              <h3 className="text-xl font-display font-bold text-foreground mb-3">{item.title}</h3>
+              <p className="text-muted leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -10,7 +10,7 @@ export default function Education() {
       className="py-20 px-4 sm:px-6 lg:px-8"
       aria-labelledby="education-heading"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto 2xl:max-w-5xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -19,11 +19,11 @@ export default function Education() {
         >
           <h2 
             id="education-heading"
-            className="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4"
+            className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4"
           >
             Formation & Parcours Académique
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+          <p className="text-muted max-w-2xl mx-auto text-lg">
             Un parcours académique solide, alliant informatique de gestion et administration des réseaux.
           </p>
           <div className="w-20 h-1 section-divider mx-auto mt-6"></div>
@@ -40,26 +40,26 @@ export default function Education() {
   className="glass glass-hover p-6 rounded-2xl flex gap-4"
 >
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-500/15 flex items-center justify-center">
                   {index === 0 ? (
-                    <Award className="w-6 h-6 text-primary-600" />
+                    <Award className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                   ) : (
-                    <GraduationCap className="w-6 h-6 text-primary-600" />
+                    <GraduationCap className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                   )}
                 </div>
               </div>
               <div className="flex-1">
-                <span className="text-sm font-mono text-slate-500 font-semibold">
+                  <span className="text-sm font-mono text-slate-500 dark:text-slate-400 font-semibold">
                   {edu.date}
                 </span>
-                <h3 className="text-lg font-display font-bold text-slate-900 mt-1 mb-1">
+                <h3 className="text-lg font-display font-bold text-foreground mt-1 mb-1">
                   {edu.degree}
                 </h3>
-                <p className="text-primary-600 font-medium text-sm">
+                <p className="text-primary-600 dark:text-primary-400 font-medium text-sm">
                   {edu.school}
                 </p>
                 {edu.detail && (
-                  <p className="text-slate-600 text-sm mt-2 leading-relaxed">
+                  <p className="text-muted text-sm mt-2 leading-relaxed">
                     {edu.detail}
                   </p>
                 )}

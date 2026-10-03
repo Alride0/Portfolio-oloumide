@@ -32,11 +32,11 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary-900 to-primary-950 text-white overflow-hidden"
+      className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary-900 to-primary-950 dark:from-primary-900/60 dark:to-primary-950/80 text-white overflow-hidden"
       aria-labelledby="contact-heading"
     >
       <div className="dark-glow" aria-hidden="true"></div>
-      <div className="relative max-w-4xl mx-auto text-center">
+      <div className="relative max-w-4xl mx-auto text-center 2xl:max-w-5xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -109,7 +109,7 @@ export default function Contact() {
           <Button 
             as="a" 
             href={`mailto:${profile.email}`}
-            className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white border-0"
+            className="w-full sm:w-auto"
           >
             <Mail className="w-4 h-4 mr-2" />
             M&apos;envoyer un message

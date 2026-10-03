@@ -16,7 +16,7 @@ export default function Projects() {
       className="py-20 px-4 sm:px-6 lg:px-8"
       aria-labelledby="projects-heading"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto 2xl:max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -25,11 +25,11 @@ export default function Projects() {
         >
           <h2 
             id="projects-heading"
-            className="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4"
+            className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4"
           >
             Projets Réalisés
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg">
+          <p className="text-muted max-w-2xl mx-auto text-lg">
             Des applications concrètes développées pour résoudre des problèmes réels, avec un accent sur la qualité, la sécurité et la performance.
           </p>
           <div className="w-20 h-1 section-divider mx-auto mt-6"></div>
@@ -65,7 +65,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
     >
       <div className="grid lg:grid-cols-2">
         {/* Galerie d'images interactive */}
-        <div className="relative h-72 lg:h-auto bg-slate-100 group">
+        <div className="relative h-72 lg:h-auto bg-slate-100 dark:bg-primary-900 group">
           <Image 
             src={images[currentImageIndex]} 
             alt={`Capture ${currentImageIndex + 1} du projet ${project.title}`}
@@ -116,24 +116,24 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
         {/* Contenu du projet (inchangé) */}
         <div className="p-8 lg:p-10 flex flex-col justify-center">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-sm font-mono text-primary-600 font-semibold">
+            <span className="text-sm font-mono text-primary-600 dark:text-primary-400 font-semibold">
               {project.client}
             </span>
-            <span className="text-slate-300">•</span>
-            <span className="text-sm text-slate-500">{project.date}</span>
+            <span className="text-slate-300 dark:text-white/20">•</span>
+            <span className="text-sm text-slate-500 dark:text-slate-400">{project.date}</span>
           </div>
           
-          <h3 className="text-2xl font-display font-bold text-slate-900 mb-4">
+          <h3 className="text-2xl font-display font-bold text-foreground mb-4">
             {project.title}
           </h3>
           
-          <p className="text-slate-600 mb-6 leading-relaxed">
+          <p className="text-muted mb-6 leading-relaxed">
             {project.description}
           </p>
           
           <ul className="space-y-2 mb-6">
             {project.features.map((feature, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+              <li key={i} className="flex items-start gap-2 text-sm text-muted">
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0"></span>
                 {feature}
               </li>

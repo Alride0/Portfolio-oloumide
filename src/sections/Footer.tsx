@@ -8,14 +8,14 @@ export default function Footer() {
 
   return (
     <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-primary-950 text-slate-300 border-t border-white/10">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto 2xl:max-w-6xl">
         <div className="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-white/10">
           {/* Colonne 1 : Identité */}
           <div>
             <h3 className="font-display font-bold text-white text-lg mb-2">
               {profile.name}
             </h3>
-            <p className="text-sm text-slate-500 mb-4">{profile.title}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{profile.title}</p>
             <p className="text-sm leading-relaxed max-w-xs">
               Conception d&apos;applications web robustes, sécurisées et scalables, de la base de données à l&apos;interface utilisateur.
             </p>

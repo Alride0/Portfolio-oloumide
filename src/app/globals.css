@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Palette cohérente : indigo -> violet (source unique de la marque) */
   --color-primary-50: oklch(0.97 0.012 280);
@@ -28,14 +30,26 @@
   --color-accent: var(--color-accent-500);
   --color-accent-foreground: oklch(0.985 0.003 275);
 
-  /* Surfaces / texte */
+  /* Surfaces / texte (tokens sémantiques : s'adaptent au mode sombre) */
   --color-background: oklch(0.985 0.003 275);
   --color-foreground: oklch(0.185 0.02 275);
+  --color-muted: oklch(0.45 0.04 256);
 
   /* Typographie */
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-jetbrains-mono);
+}
+
+/* Mode sombre : mêmes teintes indigo->violet, équilibrées pour le fond profond */
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+  --color-background: oklch(0.235 0.045 284);
+  --color-foreground: oklch(0.97 0.008 275);
+  --color-muted: oklch(0.72 0.015 275);
 }
 
 @layer base {
@@ -48,6 +62,7 @@
     color: var(--color-foreground);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
   ::selection {
     background-color: var(--color-primary-600);
@@ -67,7 +82,24 @@
       linear-gradient(to right, hsla(278, 30%, 30%, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, hsla(278, 30%, 30%, 0.05) 1px, transparent 1px);
     background-size: auto, auto, auto, 44px 44px, 44px 44px;
-    background-attachment: fixed;
+    background-attachment: scroll; /* mobile : évite les bugs iOS/Safari */
+  }
+
+  /* "fixed" uniquement sur écran large (background parallaxe stable) */
+  @media (min-width: 48rem) {
+    .app-background {
+      background-attachment: fixed;
+    }
+  }
+
+  /* Mode sombre : fond indigo profond + halo violet discret */
+  .dark .app-background {
+    background-image:
+      radial-gradient(at 12% 0%, hsla(278, 60%, 28%, 0.5) 0px, transparent 55%),
+      radial-gradient(at 88% 8%, hsla(305, 65%, 32%, 0.4) 0px, transparent 55%),
+      radial-gradient(at 100% 100%, hsla(278, 55%, 25%, 0.45) 0px, transparent 60%),
+      linear-gradient(to right, hsla(278, 60%, 90%, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, hsla(278, 60%, 90%, 0.035) 1px, transparent 1px);
   }
 
   /* Blobs flottants, teintes cohérentes (plus de cyan) */
@@ -82,6 +114,9 @@
   .blob-1 { width: 480px; height: 480px; background: hsla(278, 70%, 75%, 0.4); top: -120px; left: -120px; animation: float 22s ease-in-out infinite; }
   .blob-2 { width: 420px; height: 420px; background: hsla(305, 70%, 80%, 0.35); top: 38%; right: -140px; animation: float 26s ease-in-out infinite reverse; }
   .blob-3 { width: 400px; height: 400px; background: hsla(265, 60%, 80%, 0.3); bottom: -120px; left: 28%; animation: float 30s ease-in-out infinite; }
+  .dark .blob-1 { background: hsla(278, 70%, 35%, 0.3); }
+  .dark .blob-2 { background: hsla(305, 70%, 38%, 0.28); }
+  .dark .blob-3 { background: hsla(265, 60%, 33%, 0.22); }
 
   @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
@@ -99,6 +134,20 @@
       0 1px 2px oklch(278 0.05 0.2 / 0.04),
       0 8px 24px -12px oklch(278 0.2 0.4 / 0.14),
       inset 0 1px 0 0 oklch(1 0 0 / 0.6);
+  }
+
+  /* Glassmorphism en mode sombre */
+  .dark .glass {
+    background-color: oklch(1 0 0 / 0.05);
+    border: 1px solid oklch(1 0 0 / 0.1);
+    box-shadow:
+      0 1px 2px oklch(0 0 0 / 0.3),
+      0 8px 24px -12px oklch(0 0 0 / 0.6),
+      inset 0 1px 0 0 oklch(1 0 0 / 0.07);
+  }
+  .dark .glass-hover:hover {
+    background-color: oklch(1 0 0 / 0.09);
+    border-color: color-mix(in oklab, var(--color-primary-400) 50%, transparent);
   }
 
   /* Verre sombre (pour les sections sombres) */
@@ -150,6 +199,11 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Dégradé plus lumineux en mode sombre */
+  .dark .text-gradient {
+    background-image: linear-gradient(120deg, var(--color-primary-400), var(--color-accent-400));
   }
 
   /* Séparateur de section en dégradé */
