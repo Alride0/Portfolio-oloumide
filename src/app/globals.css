@@ -1,14 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette de couleurs enrichie et plus profonde (Premium Indigo & Violet) */
-  --color-background: hsl(210 40% 98%);
-  --color-foreground: hsl(222 47% 11%);
-  --color-primary: hsl(245 58% 51%); /* Indigo plus profond et saturé */
-  --color-primary-foreground: hsl(210 40% 98%);
-  --color-accent: hsl(262 83% 58%); /* Violet pour les accents */
-  
-  /* Typographie distinctive */
+  /* Palette cohérente : indigo -> violet (source unique de la marque) */
+  --color-primary-50: oklch(0.97 0.012 280);
+  --color-primary-100: oklch(0.94 0.028 280);
+  --color-primary-200: oklch(0.895 0.052 280);
+  --color-primary-300: oklch(0.84 0.092 280);
+  --color-primary-400: oklch(0.76 0.135 281);
+  --color-primary-500: oklch(0.67 0.18 282);
+  --color-primary-600: oklch(0.575 0.215 283);
+  --color-primary-700: oklch(0.5 0.195 284);
+  --color-primary-800: oklch(0.44 0.165 285);
+  --color-primary-900: oklch(0.385 0.14 285);
+  --color-primary-950: oklch(0.26 0.1 286);
+  --color-primary: var(--color-primary-600);
+  --color-primary-foreground: oklch(0.985 0.003 275);
+
+  /* Accent violet (pour les dégradés / highlights) */
+  --color-accent-100: oklch(0.94 0.03 305);
+  --color-accent-200: oklch(0.9 0.06 305);
+  --color-accent-300: oklch(0.83 0.1 306);
+  --color-accent-400: oklch(0.74 0.15 307);
+  --color-accent-500: oklch(0.63 0.2 308);
+  --color-accent-600: oklch(0.55 0.23 310);
+  --color-accent-700: oklch(0.48 0.2 310);
+  --color-accent-800: oklch(0.42 0.17 311);
+  --color-accent: var(--color-accent-500);
+  --color-accent-foreground: oklch(0.985 0.003 275);
+
+  /* Surfaces / texte */
+  --color-background: oklch(0.985 0.003 275);
+  --color-foreground: oklch(0.185 0.02 275);
+
+  /* Typographie */
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-jetbrains-mono);
@@ -17,6 +41,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
   body {
     background-color: var(--color-background);
@@ -24,76 +49,85 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+  ::selection {
+    background-color: var(--color-primary-600);
+    color: var(--color-primary-foreground);
+  }
 }
 
 @layer utilities {
-  /* Mesh Gradient (Lot A) */
-  .mesh-gradient {
+  /* Fond applicatif : halo indigo->violet subtile + grille, en une seule couche
+     (évite le conflit background-image entre mesh-gradient et subtle-grid) */
+  .app-background {
     background-color: var(--color-background);
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(245, 58%, 85%, 0.6) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(262, 83%, 90%, 0.5) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(245, 58%, 85%, 0.6) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(262, 83%, 90%, 0.5) 0px, transparent 50%);
+    background-image:
+      radial-gradient(at 12% 0%, hsla(278, 60%, 92%, 0.55) 0px, transparent 55%),
+      radial-gradient(at 88% 8%, hsla(305, 65%, 93%, 0.5) 0px, transparent 55%),
+      radial-gradient(at 100% 100%, hsla(278, 55%, 91%, 0.45) 0px, transparent 60%),
+      linear-gradient(to right, hsla(278, 30%, 30%, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsla(278, 30%, 30%, 0.05) 1px, transparent 1px);
+    background-size: auto, auto, auto, 44px 44px, 44px 44px;
     background-attachment: fixed;
-    position: relative;
-  }
-  
-  /* Grille subtile (Lot A) */
-  .subtle-grid {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, hsla(222, 47%, 11%, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, hsla(222, 47%, 11%, 0.06) 1px, transparent 1px);
   }
 
-  /* Blobs flottants (Lot A) */
+  /* Blobs flottants, teintes cohérentes (plus de cyan) */
   .blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
+    filter: blur(90px);
+    opacity: 0.55;
     pointer-events: none;
     z-index: 0;
   }
-  .blob-1 { width: 500px; height: 500px; background: hsla(245, 58%, 70%, 0.4); top: -100px; left: -100px; animation: float 20s ease-in-out infinite; }
-  .blob-2 { width: 400px; height: 400px; background: hsla(262, 83%, 75%, 0.3); top: 40%; right: -100px; animation: float 25s ease-in-out infinite reverse; }
-  .blob-3 { width: 450px; height: 450px; background: hsla(210, 100%, 75%, 0.3); bottom: -100px; left: 30%; animation: float 30s ease-in-out infinite; }
+  .blob-1 { width: 480px; height: 480px; background: hsla(278, 70%, 75%, 0.4); top: -120px; left: -120px; animation: float 22s ease-in-out infinite; }
+  .blob-2 { width: 420px; height: 420px; background: hsla(305, 70%, 80%, 0.35); top: 38%; right: -140px; animation: float 26s ease-in-out infinite reverse; }
+  .blob-3 { width: 400px; height: 400px; background: hsla(265, 60%, 80%, 0.3); bottom: -120px; left: 28%; animation: float 30s ease-in-out infinite; }
 
   @keyframes float {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
+    33% { transform: translate(30px, -50px) scale(1.08); }
+    66% { transform: translate(-20px, 20px) scale(0.94); }
   }
 
-  /* VRAI GLASSMORPHISM (Lot B - Amélioration majeure) */
+  /* Glassmorphism raffiné */
   .glass {
-    background-color: rgba(255, 255, 255, 0.5); /* Plus transparent */
-    backdrop-filter: blur(20px); /* Blur plus intense */
-    -webkit-backdrop-filter: blur(20px);
-    /* Bordure subtile avec reflet intérieur pour l'effet verre */
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 
-      0 4px 16px 0 rgb(0 0 0 / 0.04),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.6); /* Reflet supérieur */
+    background-color: oklch(1 0 0 / 0.55);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid oklch(1 0 0 / 0.7);
+    box-shadow:
+      0 1px 2px oklch(278 0.05 0.2 / 0.04),
+      0 8px 24px -12px oklch(278 0.2 0.4 / 0.14),
+      inset 0 1px 0 0 oklch(1 0 0 / 0.6);
   }
-  
+
+  /* Verre sombre (pour les sections sombres) */
+  .glass-dark {
+    background-color: oklch(1 0 0 / 0.06);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid oklch(1 0 0 / 0.12);
+    box-shadow:
+      0 8px 24px -12px oklch(0 0 0 / 0.4),
+      inset 0 1px 0 0 oklch(1 0 0 / 0.08);
+  }
+
   .glass-hover {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
   }
-  
+
   .glass-hover:hover {
-    background-color: rgba(255, 255, 255, 0.75);
-    border-color: rgba(99, 102, 241, 0.5); /* Bordure indigo au survol */
-    box-shadow: 
-      0 12px 32px -4px rgb(99 102 241 / 0.15),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
-    transform: translateY(-4px); /* Lévitation plus marquée */
+    background-color: oklch(1 0 0 / 0.78);
+    border-color: color-mix(in oklab, var(--color-primary-400) 70%, transparent);
+    box-shadow:
+      0 12px 32px -8px color-mix(in oklab, var(--color-primary-500) 22%, transparent),
+      inset 0 1px 0 0 oklch(1 0 0 / 0.85);
+    transform: translateY(-4px);
   }
 
-  /* Effet de brillance (Shine) au survol */
+  /* Effet de brillance au survol */
   .glass-hover::before {
     content: '';
     position: absolute;
@@ -101,18 +135,44 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.6),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.5), transparent);
     transition: left 0.7s ease;
     z-index: 1;
     pointer-events: none;
   }
-  
   .glass-hover:hover::before {
     left: 100%;
+  }
+
+  /* Textes en dégradé indigo -> violet */
+  .text-gradient {
+    background-image: linear-gradient(120deg, var(--color-primary-600), var(--color-accent-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Séparateur de section en dégradé */
+  .section-divider {
+    border-radius: 9999px;
+    background-image: linear-gradient(90deg, var(--color-primary-500), var(--color-accent-500));
+  }
+
+  /* Halo de fond pour les sections sombres */
+  .dark-glow {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .dark-glow::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(closest-side, hsla(285, 70%, 45%, 0.35), transparent);
   }
 }

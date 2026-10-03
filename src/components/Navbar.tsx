@@ -33,9 +33,9 @@ export default function Navbar() {
         {/* Logo */}
         <a 
           href="#hero" 
-          className="font-display font-bold text-xl text-slate-900 hover:text-indigo-600 transition-colors"
+          className="font-display font-bold text-xl text-slate-900 hover:text-primary-600 transition-colors"
         >
-          Oloumidé<span className="text-indigo-600">.dev</span>
+          Oloumidé<span className="text-primary-600">.dev</span>
         </a>
 
         {/* Liens Desktop */}
@@ -44,7 +44,7 @@ export default function Navbar() {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors"
+              className="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors"
             >
               {link.name}
             </a>
@@ -77,7 +77,7 @@ export default function Navbar() {
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-base font-medium text-slate-700 hover:text-indigo-600 transition-colors"
+                  className="text-base font-medium text-slate-700 hover:text-primary-600 transition-colors"
                 >
                   {link.name}
                 </a>

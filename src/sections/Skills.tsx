@@ -24,9 +24,9 @@ export default function Skills() {
             Compétences Techniques
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-            Un stack technique moderne et polyvalent, constamment enrichi par l'apprentissage continu.
+            Un stack technique moderne et polyvalent, constamment enrichi par l&apos;apprentissage continu.
           </p>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto rounded-full mt-6"></div>
+          <div className="w-20 h-1 section-divider mx-auto mt-6"></div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -31,7 +31,7 @@ export default function About() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-900 mb-4">À propos de moi</h2>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 section-divider mx-auto"></div>
         </motion.div>
         
         <div className="grid md:grid-cols-3 gap-8">
@@ -44,8 +44,8 @@ export default function About() {
   transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }} 
   className="glass glass-hover p-8 rounded-2xl"
 >
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-                <item.icon className="w-6 h-6 text-indigo-600" />
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <item.icon className="w-6 h-6 text-primary-600" />
               </div>
               <h3 className="text-xl font-display font-bold text-slate-900 mb-3">{item.title}</h3>
               <p className="text-slate-600 leading-relaxed">{item.desc}</p>

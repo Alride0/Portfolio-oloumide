@@ -16,7 +16,7 @@ export default function Contact() {
       await navigator.clipboard.writeText(profile.email);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
-    } catch (err) {
+    } catch {
       // Fallback pour les anciens navigateurs
       const textArea = document.createElement("textarea");
       textArea.value = profile.email;
@@ -32,10 +32,11 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white"
+      className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary-900 to-primary-950 text-white overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="dark-glow" aria-hidden="true"></div>
+      <div className="relative max-w-4xl mx-auto text-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           whileInView={{ opacity: 1, y: 0 }} 
@@ -65,10 +66,10 @@ export default function Contact() {
           {/* Email */}
           <a 
             href={`mailto:${profile.email}`}
-            className="glass bg-white/5 border-white/10 hover:bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center transition-all duration-300 group"
+            className="glass-dark hover:bg-white/10 p-6 rounded-2xl flex flex-col items-center text-center transition-all duration-300 group"
             aria-label={`Envoyer un email à ${profile.email}`}
           >
-            <Mail className="w-8 h-8 text-indigo-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
+            <Mail className="w-8 h-8 text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
             <h3 className="font-semibold mb-2 text-white">Email</h3>
             <p className="text-sm text-slate-400 break-all">
               {profile.email}
@@ -76,20 +77,20 @@ export default function Contact() {
           </a>
 
           {/* Téléphone */}
-          <div className="glass bg-white/5 border-white/10 p-6 rounded-2xl flex flex-col items-center text-center">
-            <Phone className="w-8 h-8 text-indigo-400 mb-4" />
+          <div className="glass-dark p-6 rounded-2xl flex flex-col items-center text-center">
+            <Phone className="w-8 h-8 text-primary-400 mb-4" />
             <h3 className="font-semibold mb-2 text-white">Téléphone</h3>
-            <a href={`tel:${profile.phones[0].replace(/\s/g, "")}`} className="text-sm text-slate-400 hover:text-indigo-400 transition-colors block">
+            <a href={`tel:${profile.phones[0].replace(/\s/g, "")}`} className="text-sm text-slate-400 hover:text-primary-400 transition-colors block">
               {profile.phones[0]}
             </a>
-            <a href={`tel:${profile.phones[1].replace(/\s/g, "")}`} className="text-sm text-slate-400 hover:text-indigo-400 transition-colors block mt-1">
+            <a href={`tel:${profile.phones[1].replace(/\s/g, "")}`} className="text-sm text-slate-400 hover:text-primary-400 transition-colors block mt-1">
               {profile.phones[1]}
             </a>
           </div>
 
           {/* Localisation */}
-          <div className="glass bg-white/5 border-white/10 p-6 rounded-2xl flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
-            <MapPin className="w-8 h-8 text-indigo-400 mb-4" />
+          <div className="glass-dark p-6 rounded-2xl flex flex-col items-center text-center sm:col-span-2 lg:col-span-1">
+            <MapPin className="w-8 h-8 text-primary-400 mb-4" />
             <h3 className="font-semibold mb-2 text-white">Localisation</h3>
             <p className="text-sm text-slate-400 leading-relaxed">
               {profile.location}
@@ -108,10 +109,10 @@ export default function Contact() {
           <Button 
             as="a" 
             href={`mailto:${profile.email}`}
-            className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white border-0"
+            className="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white border-0"
           >
             <Mail className="w-4 h-4 mr-2" />
-            M'envoyer un message
+            M&apos;envoyer un message
           </Button>
           
           <button 
@@ -127,7 +128,7 @@ export default function Contact() {
             ) : (
               <>
                 <Copy className="w-4 h-4 mr-2" />
-                Copier l'email
+                Copier l&apos;email
               </>
             )}
           </button>

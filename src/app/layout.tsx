@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="mesh-gradient subtle-grid min-h-screen font-sans relative">
+      <body className="app-background min-h-screen font-sans relative">
         <div className="blob blob-1" aria-hidden="true"></div>
         <div className="blob blob-2" aria-hidden="true"></div>
         <div className="blob blob-3" aria-hidden="true"></div>

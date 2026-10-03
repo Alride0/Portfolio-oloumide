@@ -19,17 +19,17 @@ export default function Hero() {
   transition={{ duration: 0.8, ease: "easeOut" }} 
   className="space-y-6"
 >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-sm font-medium">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
             </span>
             Disponible pour de nouvelles missions au Bénin
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-slate-900 leading-tight">
             {profile.name.split(" ")[0]} <br />
-            <span className="text-indigo-600">{profile.name.split(" ").slice(1).join(" ")}</span>
+            <span className="text-gradient">{profile.name.split(" ").slice(1).join(" ")}</span>
           </h1>
           
           <p className="text-xl text-slate-600 max-w-lg leading-relaxed">
@@ -38,17 +38,17 @@ export default function Hero() {
                     {/* Nouvelles Stats Clés pour la crédibilité */}
           <div className="flex flex-wrap gap-6 pt-2">
             <div>
-              <p className="text-3xl font-display font-bold text-indigo-600">1-2+</p>
-              <p className="text-sm text-slate-500 font-medium">Années d'expérience</p>
+              <p className="text-3xl font-display font-bold text-primary-600">1-2+</p>
+              <p className="text-sm text-slate-500 font-medium">Années d&apos;expérience</p>
             </div>
             <div className="w-px bg-slate-300 hidden sm:block"></div>
             <div>
-              <p className="text-3xl font-display font-bold text-indigo-600">3</p>
+              <p className="text-3xl font-display font-bold text-primary-600">3</p>
               <p className="text-sm text-slate-500 font-medium">Stages réalisés</p>
             </div>
             <div className="w-px bg-slate-300 hidden sm:block"></div>
             <div>
-              <p className="text-3xl font-display font-bold text-indigo-600">100%</p>
+              <p className="text-3xl font-display font-bold text-primary-600">100%</p>
               <p className="text-sm text-slate-500 font-medium">Projets déployés</p>
             </div>
           </div>
@@ -62,13 +62,13 @@ export default function Hero() {
           </div>
 
           <div className="flex items-center gap-4 pt-6">
-            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-primary-100 hover:text-primary-600 transition-colors">
               <GithubIcon className="w-5 h-5" />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors">
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-primary-100 hover:text-primary-600 transition-colors">
               <LinkedinIcon className="w-5 h-5" />
             </a>
-            <a href={`mailto:${profile.email}`} className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-indigo-100 hover:text-indigo-600 transition-colors">
+            <a href={`mailto:${profile.email}`} className="p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-primary-100 hover:text-primary-600 transition-colors">
               <Mail className="w-5 h-5" />
             </a>
           </div>
@@ -82,17 +82,22 @@ export default function Hero() {
   className="relative flex justify-center md:justify-end"
 >
 
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-200 flex items-center justify-center text-slate-400">
-             {/* Remplace le src par ta vraie photo plus tard */}
-             <Image 
-               src={profile.profileImage} 
-               alt={profile.name}
-               fill
-               className="object-cover"
-               priority
-               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-
-             />
+          <div className="relative">
+            {/* Halo lumineux */}
+            <div className="absolute -inset-5 rounded-[2.5rem] bg-gradient-to-br from-primary-500/30 via-accent-500/20 to-primary-500/30 blur-2xl"></div>
+            {/* Cadre en dégradé indigo -> violet */}
+            <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-3xl p-1 bg-gradient-to-br from-primary-500 via-accent-500 to-primary-400 shadow-2xl shadow-primary-600/25">
+              <div className="relative w-full h-full rounded-[1.4rem] overflow-hidden bg-slate-200">
+                <Image
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

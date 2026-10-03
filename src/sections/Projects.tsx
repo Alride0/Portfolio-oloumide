@@ -32,7 +32,7 @@ export default function Projects() {
           <p className="text-slate-600 max-w-2xl mx-auto text-lg">
             Des applications concrètes développées pour résoudre des problèmes réels, avec un accent sur la qualité, la sécurité et la performance.
           </p>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto rounded-full mt-6"></div>
+          <div className="w-20 h-1 section-divider mx-auto mt-6"></div>
         </motion.div>
 
         <div className="space-y-12">
@@ -116,7 +116,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
         {/* Contenu du projet (inchangé) */}
         <div className="p-8 lg:p-10 flex flex-col justify-center">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-sm font-mono text-indigo-600 font-semibold">
+            <span className="text-sm font-mono text-primary-600 font-semibold">
               {project.client}
             </span>
             <span className="text-slate-300">•</span>
@@ -134,7 +134,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
           <ul className="space-y-2 mb-6">
             {project.features.map((feature, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0"></span>
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0"></span>
                 {feature}
               </li>
             ))}

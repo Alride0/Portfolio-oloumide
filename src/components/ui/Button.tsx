@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "outline";
   children: React.ReactNode;
-  as?: any;
+  as?: React.ElementType;
   href?: string;
   target?: string;
   rel?: string;
@@ -22,11 +22,11 @@ export default function Button({
   download,
   ...props 
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500";
-  
+  const baseStyles = "inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2";
+
   const variants = {
-    primary: "bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm",
-    outline: "border border-slate-300 bg-transparent text-slate-900 hover:bg-slate-100",
+    primary: "bg-gradient-to-r from-primary-600 to-accent-600 text-white shadow-lg shadow-primary-600/25 hover:from-primary-700 hover:to-accent-700 hover:shadow-primary-600/30",
+    outline: "border border-slate-300 bg-white/60 backdrop-blur text-slate-800 hover:border-primary-300 hover:text-primary-700",
   };
 
   return (

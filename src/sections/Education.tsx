@@ -26,7 +26,7 @@ export default function Education() {
           <p className="text-slate-600 max-w-2xl mx-auto text-lg">
             Un parcours académique solide, alliant informatique de gestion et administration des réseaux.
           </p>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto rounded-full mt-6"></div>
+          <div className="w-20 h-1 section-divider mx-auto mt-6"></div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -40,11 +40,11 @@ export default function Education() {
   className="glass glass-hover p-6 rounded-2xl flex gap-4"
 >
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center">
                   {index === 0 ? (
-                    <Award className="w-6 h-6 text-indigo-600" />
+                    <Award className="w-6 h-6 text-primary-600" />
                   ) : (
-                    <GraduationCap className="w-6 h-6 text-indigo-600" />
+                    <GraduationCap className="w-6 h-6 text-primary-600" />
                   )}
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function Education() {
                 <h3 className="text-lg font-display font-bold text-slate-900 mt-1 mb-1">
                   {edu.degree}
                 </h3>
-                <p className="text-indigo-600 font-medium text-sm">
+                <p className="text-primary-600 font-medium text-sm">
                   {edu.school}
                 </p>
                 {edu.detail && (
